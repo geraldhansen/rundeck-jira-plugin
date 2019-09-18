@@ -1,0 +1,71 @@
+name: jira-plugin
+description: "@description@"
+rundeckPluginVersion: 2.0
+author: "@author@"
+date: "@date@"
+version: @version@
+url: "@url@"
+rundeckCompatibilityVersion: "3.x"
+targetHostCompatibility: "all"
+tags:
+  - jira
+  - script
+providers:
+  - name: jira-lugin
+    title: JIRA-Plugin
+    description: Add execution link to JIRA Issue
+    service: WorkflowStep
+    plugin-type: script
+    script-interpreter: python3 -u
+    script-file: add_external_link.py
+    script-args:
+    config:
+      - name: jiraticketid
+        title: JIRA ticket id
+        description: "The JIRA ticket where the link should be appended"
+        type: String
+        required: true
+        scope: Instance
+        renderingOptions:
+      - name: jiraurl
+        title: JIRA server url
+        description: "The JIRA server url"
+        type: String
+        required: true
+        scope: Instance
+        renderingOptions:
+          selectionAccessor: STORAGE_PATH
+          valueConversion: STORAGE_PATH_AUTOMATIC_READ
+      - name: jirauser
+        title: JIRA username
+        description: "The JIRA username"
+        type: String
+        required: true
+        scope: Instance
+        renderingOptions:
+          selectionAccessor: STORAGE_PATH
+          valueConversion: STORAGE_PATH_AUTOMATIC_READ
+      - name: jirapassword
+        title: JIRA password
+        description: "The JIRA password"
+        type: String
+        required: true
+        scope: Instance
+        renderingOptions:
+          selectionAccessor: STORAGE_PATH
+          valueConversion: STORAGE_PATH_AUTOMATIC_READ
+      - name: jirarundecklink
+        title: The rundeck link
+        description: "The rundeck link to be added, for example \"https://rundeck.my.domain/project/myproject/execution/show/${job.execid}\"\n
+                      ${job.execid} will be replaced by Rundeck with the current execution id."
+        type: String
+        required: true
+        scope: Instance
+        renderingOptions:
+      - name: jirarundecklinktitle
+        title: The rundeck link title
+        description: "The rundeck link title, for example \"Rundeck Project ${job.project} Execution ${job.execid}\""
+        type: String
+        required: true
+        scope: Instance
+        renderingOptions:
