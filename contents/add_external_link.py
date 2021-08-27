@@ -34,7 +34,7 @@ def add_link_to_issue():
 
     if config['issue']:
         jira = JIRA(options={'server':config['url'], 'verify':False},
-                    auth=(config['user'], config['pass']))
+                    basic_auth=(config['user'], config['pass']))
         issue = jira.issue(config['issue'])
         jira.add_simple_link(issue, {"url":config['link'],
                                      "title":config['title']})
