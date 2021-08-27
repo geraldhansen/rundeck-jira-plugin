@@ -9,8 +9,8 @@ plugins {
 
 ext.pluginName = 'JIRA-Plugin'
 ext.pluginDescription = "Add execution link to JIRA Issue"
-ext.sopsCopyright = "© 2019, Gerald Hansen"
-ext.sopsUrl = "http://rundeck.com"
+ext.sopsCopyright = "© 2021, Gerald Hansen"
+ext.sopsUrl = "https://github.com/geraldhansen/rundeck-jira-plugin"
 ext.buildDateString=new Date().format("yyyy-MM-dd'T'HH:mm:ssX")
 ext.archivesBaseName = "jira-plugin"
 ext.pluginBaseFolder = "."
