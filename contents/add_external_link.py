@@ -2,8 +2,10 @@
 ''' The Rundeck JIRA plugin'''
 
 import os
-from jira import JIRA
+
 import urllib3
+from jira import JIRA
+
 urllib3.disable_warnings()
 
 def get_jira_config():
