@@ -1,3 +1,5 @@
-/build/
+/build/tmp/
+/build/zip-contents
+/build/libs/*-SNAPSHOT.zip
 .idea
 .gradle
