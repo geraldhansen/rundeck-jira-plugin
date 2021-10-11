@@ -56,16 +56,15 @@ providers:
           valueConversion: STORAGE_PATH_AUTOMATIC_READ
       - name: jirarundecklink
         title: The rundeck link
-        description: "The rundeck link to be added, for example \"https://rundeck.my.domain/project/myproject/execution/show/${job.execid}\"\n
-                      ${job.execid} will be replaced by Rundeck with the current execution id."
+        description: "Optional - The rundeck link to be added, default is the show link to the execution."
         type: String
-        required: true
+        required: false
         scope: Instance
         renderingOptions:
       - name: jirarundecklinktitle
         title: The rundeck link title
-        description: "The rundeck link title, for example \"Rundeck Project ${job.project} Execution ${job.execid}\""
+        description: "Optional - The rundeck link title, default is \"Rundeck Project ${job.project} ${job.name} Execution ${job.execid}\""
         type: String
-        required: true
+        required: false
         scope: Instance
         renderingOptions:

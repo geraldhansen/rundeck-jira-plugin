@@ -22,8 +22,19 @@ def get_jira_config():
     jira_config['url'] = os.environ.get('RD_CONFIG_JIRAURL')
     jira_config['user'] = os.environ.get('RD_CONFIG_JIRAUSER')
     jira_config['pass'] = os.environ.get('RD_CONFIG_JIRAPASSWORD')
-    jira_config['link'] = os.environ.get('RD_CONFIG_JIRARUNDECKLINK')
-    jira_config['title'] = os.environ.get('RD_CONFIG_JIRARUNDECKLINKTITLE')
+    if os.environ.get('RD_CONFIG_JIRARUNDECKLINK'):
+        jira_config['link'] = os.environ.get('RD_CONFIG_JIRARUNDECKLINK')
+    else:
+        jira_config['link'] = (
+            f"{os.environ.get('RD_JOB_SERVERURL')}/project/{os.environ.get('RD_JOB_PROJECT')}/"
+            f"execution/show/{os.environ.get('RD_JOB_EXECID')}"
+            )
+    if os.environ.get('RD_CONFIG_JIRARUNDECKLINKTITLE'):
+        jira_config['title'] = os.environ.get('RD_CONFIG_JIRARUNDECKLINKTITLE')
+    else:
+        jira_config['title'] = (
+            f"Rundeck Project {os.environ.get('RD_JOB_PROJECT')} "
+            f"{os.environ.get('RD_JOB_NAME')} Execution {os.environ.get('RD_JOB_EXECID')}")
 
     return jira_config
 
